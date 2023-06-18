@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+.walletCard {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: linear-gradient(45deg, #6c63ff, #8256ff);
+  color: #ffffff;
+  font-family: 'Roboto', sans-serif;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 9999;
+}
+
+.walletCard:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.15);
+}
+
+.walletCard .content {
+  text-align: center;
+}
+
+.walletCard h4 {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.walletCard button {
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 700;
+  background-color: transparent;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  margin-top: 10px;
+}
+
+.walletCard button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.walletCard .accountDisplay,
+.walletCard .balanceDisplay {
+  margin-top: 1rem;
+}
+
+.walletCard .accountDisplay h3,
+.walletCard .balanceDisplay h3 {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 5px 0;
+}
+
+.walletCard .errorMessage {
+  color: #ff3b47;
+}
+
+/* Media Queries for smaller screens */
+
+@media only screen and (max-width: 600px) {
+  .walletCard {
+    padding: 1rem;
+  }
+
+  .walletCard h4 {
+    font-size: 18px;
+  }
+
+  .walletCard button {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+
+  .walletCard .accountDisplay h3,
+  .walletCard .balanceDisplay h3 {
+    font-size: 16px;
+  }
+}

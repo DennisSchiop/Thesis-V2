@@ -1,0 +1,62 @@
+.userFeatures {
+  margin: 2rem;
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+}
+
+.userFeatures h2 {
+  font-size: 2rem;
+  color: #333;
+}
+
+.userFeatures button {
+  margin-top: 1rem;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  background-color: #4CBB17; /* green */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+
+.userFeatures .qrScanner::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 10%; /* Adjust to your preference */
+  left: 10%; /* Adjust to your preference */
+  width: 80%; /* Adjust to your preference */
+  height: 80%; /* Adjust to your preference */
+}
+
+.userFeatures .qrScanner {
+  position: relative; /* Needed to position the overlay correctly */
+  width: 80%; /* Adjust to your preference */
+  margin: 0 auto; /* Center the scanner */
+}
+
+.userFeatures {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.userFeatures .qrScanner button {
+  margin-top: 1rem;
+}
+
+.userFeatures .gallery {
+  margin-top: 2rem;
+}
+
+.userFeatures .gallery .sneakerItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+  animation: fadeIn 0.5s ease;
+}

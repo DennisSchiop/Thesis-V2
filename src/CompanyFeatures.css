@@ -1,0 +1,107 @@
+.companyFeatures {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.companyFeatures h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.companyFeatures input[type="text"] {
+  width: 300px;
+  padding: 10px;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.companyFeatures button {
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 700;
+  background-color: #6c63ff;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.companyFeatures button:hover {
+  background-color: #8256ff;
+}
+
+.companyFeatures .qrCodeContainer {
+  margin-top: 1rem;
+}
+
+.companyFeatures .generatedQRCodeSection {
+  margin-top: 2rem;
+}
+
+.companyFeatures .generatedQRCodeSection h3 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.companyFeatures .qrCodeList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.companyFeatures .qrCodeItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeIn 0.5s ease;
+}
+
+.companyFeatures .qrCodeItem .qrCodeContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.companyFeatures .qrCodeItem .qrCodeImage {
+  width: 200px;
+  height: 200px;
+}
+
+.companyFeatures .qrCodeItem .modelName {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333333;
+  text-align: center;
+  margin-top: 0.5rem;
+  opacity: 0;
+  animation: slideIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
