@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import QRCode from 'qrcode.react';
 import Web3 from 'web3';
-import SneakerQrContract from './contracts/QrStore.json'; // replace this with the actual path
+import QrStoreContract from './contracts/QrStore.json';
 
 let web3;
-let sneakerQr;
+let qrStore;
 
 const CompanyFeatures = () => {
   const [brand, setBrand] = useState('');
@@ -16,29 +16,35 @@ const CompanyFeatures = () => {
 
   useEffect(() => {
     const loadBlockchainData = async () => {
-      // Check if Web3 has been injected by the browser
       if (window.ethereum) {
         window.web3 = new Web3(window.ethereum);
-        await window.ethereum.enable(); // Request account access
-      }
-      // Or fall back to Ganache if no injected web3 instance is detected
-      else {
+        await window.ethereum.enable();
+      } else {
         window.web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:7545"));
       }
 
       web3 = window.web3;
 
-      // Load account
       const accounts = await web3.eth.getAccounts();
       setAccount(accounts[0]);
 
-      // Create a JavaScript version of the smart contract
-      const networkId = await web3.eth.net.getId();
-      const deployedNetwork = SneakerQrContract.networks[networkId];
-      sneakerQr = new web3.eth.Contract(
-        SneakerQrContract.abi,
-        deployedNetwork && deployedNetwork.address,
-      );
+      const networkId = '5777';
+      console.log('Network ID: ', networkId); // log networkId
+
+      const deployedNetwork = QrStoreContract.networks[networkId];
+      console.log('Deployed Network: ', deployedNetwork); // log deployedNetwork
+
+      if (deployedNetwork) {
+        qrStore = new web3.eth.Contract(
+          QrStoreContract.abi,
+          deployedNetwork.address,
+        );
+      } else {
+        console.error('No deployed network found for network ID: ', networkId);
+      }
+
+      console.log('QrStore Contract: ', QrStoreContract); // log QrStoreContract
+      console.log('QR Store: ', qrStore);  // log qrStore
     };
 
     loadBlockchainData();
@@ -48,11 +54,13 @@ const CompanyFeatures = () => {
     const qrData = `Brand: ${brand}, Model: ${model}, Color: ${color}, Size: ${size}`;
     setQr(qrData);
     try {
-      const response = await sneakerQr.methods.storeQrData(qrData).send({ from: account });
+      const response = await qrStore.methods.storeQrData(qrData).send({ from: account });
       console.log(response);
     } catch (error) {
       console.error("Error storing QR code on blockchain: ", error);
     }
+
+    console.log('Account: ', account);
   };
 
   return (

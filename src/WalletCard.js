@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ethers } from 'ethers';
+import Web3 from 'web3';
 import { useNavigate } from 'react-router-dom';
 import './WalletCard.css';
 
@@ -19,11 +19,11 @@ const WalletCard = () => {
         await window.ethereum.enable();
 
         // Create a new web3 instance
-        const web3 = new ethers.providers.Web3Provider(window.ethereum);
+        const web3 = new Web3(window.ethereum);
 
         // Get the selected account
-        const [selectedAccount] = await web3.listAccounts();
-        accountChangedHandler(selectedAccount);
+        const accounts = await web3.eth.getAccounts();
+        accountChangedHandler(accounts[0]);
 
         // Update button text to indicate successful connection
         setConnButtonText('Wallet Connected');
@@ -51,16 +51,14 @@ const WalletCard = () => {
     getAccountBalance(newAccount.toString());
   };
 
-  const getAccountBalance = (account) => {
-    window.ethereum
-      .request({ method: 'eth_getBalance', params: [account, 'latest'] })
-      .then((balance) => {
-        setUserBalance(ethers.utils.formatEther(balance));
-      })
-      .catch((error) => {
-        setErrorMessage(error.message);
-        console.error('Error getting account balance:', error);
-      });
+  const getAccountBalance = async (account) => {
+    try {
+      const balance = await window.web3.eth.getBalance(account);
+      setUserBalance(window.web3.utils.fromWei(balance, 'ether'));
+    } catch (err) {
+      setErrorMessage(err.message);
+      console.error('Error getting account balance:', err);
+    }
   };
 
   const chainChangedHandler = () => {

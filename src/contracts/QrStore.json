@@ -18,7 +18,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -50,7 +51,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     }
   ],
   "metadata": "{\"compiler\":{\"version\":\"0.8.0+commit.c7dfd78e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"}],\"name\":\"getQrData\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"qrData\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"data\",\"type\":\"string\"}],\"name\":\"storeQrData\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/SneakerQr.sol\":\"QrStore\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/SneakerQr.sol\":{\"keccak256\":\"0x9853b6f063f90ad101a9801e108f07594c7b24d8a1d91f90b71b43471ea11a3e\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://6a10b84bf11ab449d810348ccfb3f7fd6aeb567b5d0128408b14313d9a2de00b\",\"dweb:/ipfs/QmeShCGkGNoXkUVK1NtkdyyzAFkj6fPDFvEmH6CuzV6rhH\"]}},\"version\":1}",
@@ -2713,9 +2715,17 @@
     "name": "solc",
     "version": "0.8.0+commit.c7dfd78e.Emscripten.clang"
   },
-  "networks": {},
+  "networks": {
+    "5777": {
+      "events": {},
+      "links": {},
+      "address": "0xAd122e234f4FEC82F7A2D3fa2C18001A8F7Aa88F",
+      "transactionHash": "0xd32b16cdd956bc2fb424d042298b8f96bc3b5835c09f5bd057140e92de7c45c5"
+    }
+  },
   "schemaVersion": "3.4.14",
-  "updatedAt": "2023-06-18T21:09:43.879Z",
+  "updatedAt": "2023-06-21T10:07:26.853Z",
+  "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
     "methods": {},
