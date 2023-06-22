@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import QRCode from 'qrcode.react';
 import Web3 from 'web3';
 import QrStoreContract from './contracts/QrStore.json';
@@ -13,6 +13,7 @@ const CompanyFeatures = () => {
   const [size, setSize] = useState('');
   const [qr, setQr] = useState(null);
   const [account, setAccount] = useState('');
+  const qrCodeRef = useRef(null);
 
   useEffect(() => {
     const loadBlockchainData = async () => {
@@ -59,8 +60,17 @@ const CompanyFeatures = () => {
     } catch (error) {
       console.error("Error storing QR code on blockchain: ", error);
     }
+  };
 
-    console.log('Account: ', account);
+  const downloadQR = () => {
+    const canvas = qrCodeRef.current.querySelector("canvas");
+    const imageUrl = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+    let downloadLink = document.createElement("a");
+    downloadLink.href = imageUrl;
+    downloadLink.download = "qr_code.png";
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    document.body.removeChild(downloadLink);
   };
 
   return (
@@ -71,9 +81,10 @@ const CompanyFeatures = () => {
       <input type="text" placeholder="Color" onChange={e => setColor(e.target.value)} />
       <input type="text" placeholder="Size" onChange={e => setSize(e.target.value)} />
       <button onClick={generateQR}>Generate</button>
-      {qr && <QRCode value={qr} />}
+      {qr && <div ref={qrCodeRef}><QRCode value={qr} size={256} /></div>}
+      {qr && <button onClick={downloadQR}>Download QR Code</button>}
     </div>
   );
 };
 
-export default CompanyFeatures;
+export default CompanyFeatures

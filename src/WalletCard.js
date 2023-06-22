@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Web3 from 'web3';
 import { useNavigate } from 'react-router-dom';
 import './WalletCard.css';
@@ -9,6 +9,15 @@ const WalletCard = () => {
   const [userBalance, setUserBalance] = useState(null);
   const [connButtonText, setConnButtonText] = useState('Connect Wallet');
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (window.ethereum) {
+      window.ethereum.on('accountsChanged', accountChangedHandler);
+      window.ethereum.on('chainChanged', chainChangedHandler);
+    } else {
+      console.error('MetaMask is not installed.');
+    }
+  }, []);
 
   const connectWithMetaMask = async () => {
     if (typeof window.ethereum !== 'undefined') {
@@ -65,10 +74,6 @@ const WalletCard = () => {
     // Reload the page to avoid any errors with chain change mid-use of the application
     window.location.reload();
   };
-
-  // Listen for account changes
-  window.ethereum.on('accountsChanged', accountChangedHandler);
-  window.ethereum.on('chainChanged', chainChangedHandler);
 
   return (
     <div className="walletCard">
