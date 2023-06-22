@@ -1,107 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
 .companyFeatures {
-  margin-top: 2rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: linear-gradient(45deg, #6c63ff, #8256ff);
+  color: #ffffff;
+  font-family: 'Roboto', sans-serif;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 9999;
+  padding: 20px;
+}
+
+.companyFeatures:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 12px 20px rgba(255, 255, 255, 0.15);
 }
 
 .companyFeatures h2 {
-  font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 1rem;
+  font-size: 50px;
+  font-weight: 1000;
+  margin-bottom: 50px;
 }
 
-.companyFeatures input[type="text"] {
-  width: 300px;
+.companyFeatures input {
   padding: 10px;
-  margin-bottom: 1rem;
-  border: 1px solid #ccc;
+  margin: 5px 0;
+  font-size: 17px;
+  border: none;
   border-radius: 5px;
-  font-size: 16px;
+  background-color: white;
+  color: #6c63ff;
+}
+
+
+.companyFeatures::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('C:\Users\Sinned\sneakcheck\src\Default_purple_cyberpunk_2077_background_with_a_SCANNER_scanni_0_d2a24f8b-6fc7-4e90-87da-c9fe06b028ff_1.jpg') no-repeat center center/cover;
+  opacity: 0.5;
+  z-index: -1;
 }
 
 .companyFeatures button {
   padding: 10px 20px;
   font-size: 16px;
   font-weight: 700;
-  background-color: #6c63ff;
-  color: #ffffff;
-  border: none;
+  background-color: transparent;
+  color: #311515;
+  border: 2px solid #ffffff;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  margin-top: 10px;
 }
 
 .companyFeatures button:hover {
-  background-color: #8256ff;
+  background-color: white;
+  border-color: white;
 }
 
-.companyFeatures .qrCodeContainer {
-  margin-top: 1rem;
-}
+/* Media Queries for smaller screens */
 
-.companyFeatures .generatedQRCodeSection {
-  margin-top: 2rem;
-}
-
-.companyFeatures .generatedQRCodeSection h3 {
-  font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 1rem;
-}
-
-.companyFeatures .qrCodeList {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-}
-
-.companyFeatures .qrCodeItem {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  animation: fadeIn 0.5s ease;
-}
-
-.companyFeatures .qrCodeItem .qrCodeContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 0.5rem;
-}
-
-.companyFeatures .qrCodeItem .qrCodeImage {
-  width: 200px;
-  height: 200px;
-}
-
-.companyFeatures .qrCodeItem .modelName {
-  font-size: 16px;
-  font-weight: 500;
-  color: #333333;
-  text-align: center;
-  margin-top: 0.5rem;
-  opacity: 0;
-  animation: slideIn 0.5s ease forwards;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
+@media only screen and (max-width: 600px) {
+  .companyFeatures {
+    padding: 1rem;
   }
-  to {
-    opacity: 1;
-  }
-}
 
-@keyframes slideIn {
-  from {
-    transform: translateY(20px);
-    opacity: 0;
+  .companyFeatures h2 {
+    font-size: 18px;
   }
-  to {
-    transform: translateY(0);
-    opacity: 1;
+
+  .companyFeatures input {
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  .companyFeatures button {
+    padding: 8px 16px;
+    font-size: 14px;
   }
 }

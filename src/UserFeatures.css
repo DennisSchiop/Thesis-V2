@@ -1,62 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
 .userFeatures {
-  margin: 2rem;
-  text-align: center;
-  font-family: 'Arial', sans-serif;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: #ffffff;
+  font-family: 'Roboto', sans-serif;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 9999;
+  padding: 20px;
+  background: linear-gradient(45deg, #6c63ff, #8256ff);
+  opacity: 1.5;
+  background-image: url('C:\Users\Sinned\sneakcheck\src\Default_App_background_simple_stylish_cyberpunk_2077_purple_pr_3_04b73a70-ea2c-439a-81dd-630b58c805fa_1.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.userFeatures:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.15);
 }
 
 .userFeatures h2 {
-  font-size: 2rem;
-  color: #333;
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 10px;
 }
 
 .userFeatures button {
-  margin-top: 1rem;
-  padding: 1rem 2rem;
-  font-size: 1rem;
-  background-color: #4CBB17; /* green */
-  color: white;
-  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 700;
+  background-color: transparent;
+  color: #ffffff;
+  border: 2px solid #ffffff;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  margin-top: 10px;
 }
 
-
-.userFeatures .qrScanner::before {
-  content: '';
-  display: block;
-  position: absolute;
-  top: 10%; /* Adjust to your preference */
-  left: 10%; /* Adjust to your preference */
-  width: 80%; /* Adjust to your preference */
-  height: 80%; /* Adjust to your preference */
+.userFeatures button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
-.userFeatures .qrScanner {
-  position: relative; /* Needed to position the overlay correctly */
-  width: 80%; /* Adjust to your preference */
-  margin: 0 auto; /* Center the scanner */
+.gallery {
+  margin-top: 1rem;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.userFeatures {
+.sneakerItem {
+  width: 300px;
+  margin: 10px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-
-.userFeatures .qrScanner button {
-  margin-top: 1rem;
+.sneakerDetails {
+  margin-bottom: 10px;
+  text-align: center;
 }
 
-.userFeatures .gallery {
-  margin-top: 2rem;
+.sneakerDetails p {
+  margin-bottom: 5px;
 }
 
-.userFeatures .gallery .sneakerItem {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 1rem;
-  animation: fadeIn 0.5s ease;
+.sneakerItem img {
+  width: 100%;
+  height: auto;
+  margin-top: 10px;
+}
+
+.authenticSneakerMessage {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 4em;
+  font-weight: 700;
+  color: #4CAF50;
+  text-shadow: 0px 0px 10px rgba(76, 175, 80, 0.5);
+  opacity: 0;
+  animation: showMessage 2s forwards;
+  pointer-events: none;
+}
+
+@keyframes showMessage {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -60%);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* Media Queries for smaller screens */
+
+@media only screen and (max-width: 600px) {
+  .userFeatures {
+    padding: 1rem;
+  }
+
+  .userFeatures h2 {
+    font-size: 18px;
+  }
+
+  .userFeatures button {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+
+  .sneakerItem {
+    width: 100%;
+  }
 }

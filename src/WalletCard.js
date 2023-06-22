@@ -22,7 +22,7 @@ const WalletCard = () => {
   const connectWithMetaMask = async () => {
     if (typeof window.ethereum !== 'undefined') {
       try {
-        setConnButtonText('Connecting...'); // Update button text to indicate connection in progress
+        setConnButtonText('Connecting...'); 
 
         // Request access to MetaMask accounts
         await window.ethereum.enable();

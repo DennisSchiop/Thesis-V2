@@ -45,6 +45,19 @@
   margin-top: 10px;
 }
 
+
+.walletCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('C:\Users\Sinned\sneakcheck\src\Default_purple_cyberpunk_2077_background_with_a_SCANNER_scanni_2_b9103aae-1f08-49d9-a1bf-d3bf52ea7c13_1.jpg') no-repeat center center/cover;
+  opacity: 0.8;
+  z-index: -1;
+}
+
 .walletCard button:hover {
   background-color: rgba(255, 255, 255, 0.1);
   border-color: rgba(255, 255, 255, 0.3);

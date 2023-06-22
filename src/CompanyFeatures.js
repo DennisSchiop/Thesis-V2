@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import QRCode from 'qrcode.react';
 import Web3 from 'web3';
 import QrStoreContract from './contracts/QrStore.json';
+import "./CompanyFeatures.css";
 
 let web3;
 let qrStore;
@@ -11,6 +12,7 @@ const CompanyFeatures = () => {
   const [model, setModel] = useState('');
   const [color, setColor] = useState('');
   const [size, setSize] = useState('');
+  const [imageUrl, setImageUrl] = useState('');
   const [qr, setQr] = useState(null);
   const [account, setAccount] = useState('');
   const qrCodeRef = useRef(null);
@@ -21,7 +23,7 @@ const CompanyFeatures = () => {
         window.web3 = new Web3(window.ethereum);
         await window.ethereum.enable();
       } else {
-        window.web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:7545"));
+        window.web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:7545'));
       }
 
       web3 = window.web3;
@@ -30,44 +32,43 @@ const CompanyFeatures = () => {
       setAccount(accounts[0]);
 
       const networkId = '5777';
-      console.log('Network ID: ', networkId); // log networkId
-
       const deployedNetwork = QrStoreContract.networks[networkId];
-      console.log('Deployed Network: ', deployedNetwork); // log deployedNetwork
 
       if (deployedNetwork) {
-        qrStore = new web3.eth.Contract(
-          QrStoreContract.abi,
-          deployedNetwork.address,
-        );
+        qrStore = new web3.eth.Contract(QrStoreContract.abi, deployedNetwork.address);
       } else {
         console.error('No deployed network found for network ID: ', networkId);
       }
-
-      console.log('QrStore Contract: ', QrStoreContract); // log QrStoreContract
-      console.log('QR Store: ', qrStore);  // log qrStore
     };
 
     loadBlockchainData();
   }, []);
 
   const generateQR = async () => {
-    const qrData = `Brand: ${brand}, Model: ${model}, Color: ${color}, Size: ${size}`;
-    setQr(qrData);
+    const qrData = {
+      brand: brand,
+      model: model,
+      color: color,
+      size: size,
+      imageUrl: imageUrl
+    };
+
+    setQr(JSON.stringify(qrData));
+
     try {
-      const response = await qrStore.methods.storeQrData(qrData).send({ from: account });
+      const response = await qrStore.methods.storeQrData(JSON.stringify(qrData)).send({ from: account });
       console.log(response);
     } catch (error) {
-      console.error("Error storing QR code on blockchain: ", error);
+      console.error('Error storing QR code on blockchain: ', error);
     }
   };
 
   const downloadQR = () => {
-    const canvas = qrCodeRef.current.querySelector("canvas");
-    const imageUrl = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-    let downloadLink = document.createElement("a");
+    const canvas = qrCodeRef.current.querySelector('canvas');
+    const imageUrl = canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream');
+    let downloadLink = document.createElement('a');
     downloadLink.href = imageUrl;
-    downloadLink.download = "qr_code.png";
+    downloadLink.download = 'qr_code.png';
     document.body.appendChild(downloadLink);
     downloadLink.click();
     document.body.removeChild(downloadLink);
@@ -80,6 +81,7 @@ const CompanyFeatures = () => {
       <input type="text" placeholder="Model" onChange={e => setModel(e.target.value)} />
       <input type="text" placeholder="Color" onChange={e => setColor(e.target.value)} />
       <input type="text" placeholder="Size" onChange={e => setSize(e.target.value)} />
+      <input type="text" placeholder="Image URL" onChange={e => setImageUrl(e.target.value)} />
       <button onClick={generateQR}>Generate</button>
       {qr && <div ref={qrCodeRef}><QRCode value={qr} size={256} /></div>}
       {qr && <button onClick={downloadQR}>Download QR Code</button>}
@@ -87,4 +89,4 @@ const CompanyFeatures = () => {
   );
 };
 
-export default CompanyFeatures
+export default CompanyFeatures;
