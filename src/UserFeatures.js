@@ -15,6 +15,8 @@ const UserFeatures = () => {
   const videoRef = useRef();
   const [scanned, setScanned] = useState(false);
   const [showMessage, setShowMessage] = useState(false);
+  const [NIKES_PUBLIC_ADDRESS] = '0x5c873eE349a12A523bA5a9b233BA5F32bF7286bF';
+
 
 
   const startScanning = () => {
@@ -142,7 +144,7 @@ const UserFeatures = () => {
       )}
       {showMessage && (
         <div className="authenticSneakerMessage">
-          Authentic Sneakers
+          
         </div>
       )}
       <div className="gallery">
