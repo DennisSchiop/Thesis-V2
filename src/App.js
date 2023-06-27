@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import WalletCard from './WalletCard';
+import WalletCard from './MetaMask';
 import UserCompanySelection from './UserCompanySelection';
 import UserFeatures from './UserFeatures';
 import CompanyFeatures from './CompanyFeatures';

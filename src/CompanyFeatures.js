@@ -19,22 +19,27 @@ const CompanyFeatures = () => {
 
   useEffect(() => {
     const loadBlockchainData = async () => {
+      // Check if MetaMask or other Ethereum provider is available
       if (window.ethereum) {
         window.web3 = new Web3(window.ethereum);
         await window.ethereum.enable();
       } else {
+        // Fallback to local development provider
         window.web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:7545'));
       }
 
       web3 = window.web3;
 
+      // Get the current user's Ethereum account
       const accounts = await web3.eth.getAccounts();
       setAccount(accounts[0]);
 
+      // Set the network ID of the deployed contract
       const networkId = '5777';
       const deployedNetwork = QrStoreContract.networks[networkId];
 
       if (deployedNetwork) {
+        // Create a new contract instance
         qrStore = new web3.eth.Contract(QrStoreContract.abi, deployedNetwork.address);
       } else {
         console.error('No deployed network found for network ID: ', networkId);
@@ -45,6 +50,7 @@ const CompanyFeatures = () => {
   }, []);
 
   const generateQR = async () => {
+    // Generate QR data object
     const qrData = {
       brand: brand,
       model: model,
@@ -56,6 +62,7 @@ const CompanyFeatures = () => {
     setQr(JSON.stringify(qrData));
 
     try {
+      // Store QR data on the blockchain
       const response = await qrStore.methods.storeQrData(JSON.stringify(qrData)).send({ from: account });
       console.log(response);
     } catch (error) {
@@ -64,8 +71,11 @@ const CompanyFeatures = () => {
   };
 
   const downloadQR = () => {
+    // Convert QR code to image URL
     const canvas = qrCodeRef.current.querySelector('canvas');
     const imageUrl = canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream');
+
+    // Create a download link and trigger download
     let downloadLink = document.createElement('a');
     downloadLink.href = imageUrl;
     downloadLink.download = 'qr_code.png';

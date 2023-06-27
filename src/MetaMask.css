@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
-.walletCard {
+.cryptoWalletCard {
   position: fixed;
   top: 0;
   left: 0;
@@ -17,16 +17,12 @@
   z-index: 9999;
 }
 
-.walletCard:hover {
+.cryptoWalletCard:hover {
   transform: scale(1.05);
   box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.15);
 }
 
-.walletCard .content {
-  text-align: center;
-}
-
-.walletCard h4 {
+.cryptoWalletCard h4 {
   font-size: 25px;
   font-weight: 500;
   margin-bottom: 10px;
@@ -36,8 +32,7 @@
   text-shadow: 2px 2px 4px rgba(108, 99, 255, 0.3);
 }
 
-
-.walletCard button {
+.cryptoWalletCard button {
   padding: 10px 20px;
   font-size: 16px;
   font-weight: 700;
@@ -50,8 +45,7 @@
   margin-top: 10px;
 }
 
-
-.walletCard::before {
+.cryptoWalletCard::before {
   content: "";
   position: absolute;
   top: 0;
@@ -63,45 +57,45 @@
   z-index: -1;
 }
 
-.walletCard button:hover {
+.cryptoWalletCard button:hover {
   background-color: rgba(255, 255, 255, 0.1);
   border-color: rgba(255, 255, 255, 0.3);
 }
 
-.walletCard .accountDisplay,
-.walletCard .balanceDisplay {
+.cryptoWalletCard .accountInfo,
+.cryptoWalletCard .balanceInfo {
   margin-top: 1rem;
 }
 
-.walletCard .accountDisplay h3,
-.walletCard .balanceDisplay h3 {
+.cryptoWalletCard .accountInfo h3,
+.cryptoWalletCard .balanceInfo h3 {
   font-size: 18px;
   font-weight: 500;
   margin: 5px 0;
 }
 
-.walletCard .errorMessage {
+.cryptoWalletCard .errorMessage {
   color: #ff3b47;
 }
 
 /* Media Queries for smaller screens */
 
 @media only screen and (max-width: 600px) {
-  .walletCard {
+  .cryptoWalletCard {
     padding: 1rem;
   }
 
-  .walletCard h4 {
+  .cryptoWalletCard h4 {
     font-size: 18px;
   }
 
-  .walletCard button {
+  .cryptoWalletCard button {
     padding: 8px 16px;
     font-size: 14px;
   }
 
-  .walletCard .accountDisplay h3,
-  .walletCard .balanceDisplay h3 {
+  .cryptoWalletCard .accountInfo h3,
+  .cryptoWalletCard .balanceInfo h3 {
     font-size: 16px;
   }
 }
