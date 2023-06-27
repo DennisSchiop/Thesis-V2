@@ -36,7 +36,7 @@ The benefits of using blockchain technology for safeguarding designer sneakers i
 ## Features
 
 - Feature 1: (e.g., Securely verify the authenticity of designer sneakers)
-- Feature 2: (e.g., Track the ownership and transaction history of each sneaker)
+- Feature 2: (e.g., Track the transaction history of each sneaker)
 - Feature 3: (e.g., User-friendly interface for easy management and verification)
 - Feature 4: (e.g., Integration with popular sneaker marketplaces)
 - Feature 5: (e.g., Web App - can be used from any web browser)
@@ -49,6 +49,8 @@ Follow these instructions to set up the project on your local machine.
 
 - Ensure you have [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed.
 
+- Ensure you have Ganache configured + MetaMask extension.
+
 - Ensure you have React installed
 
 ### Installation
@@ -56,6 +58,9 @@ Follow these instructions to set up the project on your local machine.
 1. Open and unzip the file sent. 
 2. Navigate to the project directory: "cd sneakcheck".
 3. Install the npm dependencies:  "npm install".
+4. Configure MetaMask - app will guide that if needed.
+5. Configure local Ganache blockchain.
+6. Connect them, and start!
 
 
 
