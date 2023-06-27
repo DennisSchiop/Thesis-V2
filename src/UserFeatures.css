@@ -16,8 +16,8 @@
   z-index: 9999;
   padding: 20px;
   background: linear-gradient(45deg, #6c63ff, #8256ff);
-  opacity: 1.5;
-  background-image: url('C:\Users\Sinned\sneakcheck\src\Default_App_background_simple_stylish_cyberpunk_2077_purple_pr_3_04b73a70-ea2c-439a-81dd-630b58c805fa_1.jpg');
+  /* Placeholder background image */
+  background-image: url('C:\Users\Sinned\sneakcheck\src\Default_purple_cyberpunk_2077_background_with_a_SCANNER_scanni_0_d2a24f8b-6fc7-4e90-87da-c9fe06b028ff_1.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -29,10 +29,30 @@
 }
 
 .userFeatures h2 {
-  font-size: 20px;
+  font-size: 50px;
   font-weight: 500;
   margin-bottom: 10px;
+  position: relative;
+  display: inline-block;
+  padding: 10px;
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  box-shadow: 15px 15px 15px rgba(0, 0, 0, 0.15);
+  animation: fadeInUp 1s ease;
 }
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 
 .userFeatures button {
   padding: 10px 20px;
@@ -54,36 +74,34 @@
 
 .gallery {
   margin-top: 1rem;
-  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.sneakerItem {
-  width: 300px;
+.sneakerItemColumn {
   margin: 10px;
   padding: 20px;
   background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  border-radius: 5px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-.sneakerDetails {
+.sneakerItemColumn .sneakerDetails {
   margin-bottom: 10px;
   text-align: center;
 }
 
-.sneakerDetails p {
-  margin-bottom: 5px;
+.sneakerItemColumn .sneakerDetails p {
+  margin: 5px 0;
 }
 
-.sneakerItem img {
+.sneakerItemColumn .sneakerImage {
   width: 100%;
   height: auto;
   margin-top: 10px;
+  border-radius: 5px;
 }
 
 .authenticSneakerMessage {
@@ -91,13 +109,20 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 4em;
+  font-size: 2.5em;
   font-weight: 700;
-  color: #4CAF50;
-  text-shadow: 0px 0px 10px rgba(76, 175, 80, 0.5);
+  color: #ffffff;
   opacity: 0;
   animation: showMessage 2s forwards;
   pointer-events: none;
+}
+
+.authenticSneakerMessage.green {
+  text-shadow: 0px 0px 10px rgba(76, 175, 80, 0.8);
+}
+
+.authenticSneakerMessage.red {
+  text-shadow: 0px 0px 10px rgba(255, 0, 0, 0.8);
 }
 
 @keyframes showMessage {
@@ -125,9 +150,5 @@
   .userFeatures button {
     padding: 8px 16px;
     font-size: 14px;
-  }
-
-  .sneakerItem {
-    width: 100%;
   }
 }

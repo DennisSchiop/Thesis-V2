@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import QRCode from 'qrcode.react';
 import Web3 from 'web3';
 import QrStoreContract from './contracts/QrStore.json';
-import "./CompanyFeatures.css";
+import './CompanyFeatures.css';
 
 let web3;
 let qrStore;

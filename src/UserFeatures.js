@@ -15,9 +15,6 @@ const UserFeatures = () => {
   const videoRef = useRef();
   const [scanned, setScanned] = useState(false);
   const [showMessage, setShowMessage] = useState(false);
-  const [NIKES_PUBLIC_ADDRESS] = '0x5c873eE349a12A523bA5a9b233BA5F32bF7286bF';
-
-
 
   const startScanning = () => {
     setScanning(true);
@@ -95,7 +92,7 @@ const UserFeatures = () => {
     if (scanned) {
       return;
     }
-
+  
     console.log(data); // log the data read from the QR code
     if (data) {
       const qrData = await sneakerQr.methods.getQrData(account).call(); // get the data from the blockchain
@@ -109,13 +106,13 @@ const UserFeatures = () => {
             return [...prevGallery, { status: "Authentic Sneaker", details: data }];
           }
         });
+        setShowMessage("Authentic Sneakers"); // Set the message for authentic sneakers
       } else {
-        console.log("Not an authentic sneaker");
+        setShowMessage("Fake Sneakers"); // Set the message for fake sneakers
       }
       setScanned(true); // Set scanned to true after a successful scan
-      setShowMessage(true); // Show the "Authentic Sneakers" message
       setTimeout(() => {
-        setShowMessage(false); // Hide the message after 2 seconds
+        setShowMessage(null); // Clear the message after 2 seconds
       }, 2000);
     }
   };
@@ -144,7 +141,6 @@ const UserFeatures = () => {
       )}
       {showMessage && (
         <div className="authenticSneakerMessage">
-          
         </div>
       )}
       <div className="gallery">
@@ -154,14 +150,14 @@ const UserFeatures = () => {
             .map((sneaker, index) => {
               const details = JSON.parse(sneaker.details);
               return (
-                <div className="sneakerItem" key={index}>
+                <div className="sneakerItemColumn" key={index}>
                   <div className="sneakerDetails">
                     <p><strong>Brand:</strong> {details.brand}</p>
                     <p><strong>Model:</strong> {details.model}</p>
                     <p><strong>Color:</strong> {details.color}</p>
                     <p><strong>Size:</strong> {details.size}</p>
                   </div>
-                  <img src={details.imageUrl} alt="Sneaker" />
+                  <img className="sneakerImage" src={details.imageUrl} alt="Sneaker" />
                 </div>
               );
             })
